@@ -491,7 +491,7 @@
                         <i class="fas fa-user"></i>
                         Full Name
                     </label>
-                    <input type="text" id="full-name" class="form-input" placeholder="Enter your full name" required>
+                    <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
                     <div id="name-error" class="error-message"></div>
                 </div>
 
@@ -678,7 +678,7 @@
 
         // Form validation
         function validateForm() {
-            const fullName = document.getElementById('full-name').value.trim();
+            const fullName = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
@@ -782,7 +782,7 @@
             
             try {
                 const userData = {
-                    fullName: document.getElementById('full-name').value.trim(),
+                    fullName: document.getElementById('name').value.trim(),
                     email: document.getElementById('email').value.trim(),
                     password: document.getElementById('password').value
                 };
@@ -869,7 +869,7 @@
         // Real-time validation
         function initRealTimeValidation() {
             const inputs = [
-                { id: 'full-name', errorId: 'name-error' },
+                { id: 'name', errorId: 'name-error' },
                 { id: 'email', errorId: 'email-error' },
                 { id: 'password', errorId: 'password-error' },
                 { id: 'confirm-password', errorId: 'confirm-password-error' }
@@ -885,7 +885,7 @@
                     // Validate individual field on blur
                     const value = input.value.trim();
                     
-                    if (id === 'full-name' && (!value || value.length < 2)) {
+                    if (id === 'name' && (!value || value.length < 2)) {
                         showError(errorId, 'Please enter your full name (at least 2 characters)');
                     } else if (id === 'email' && value && !AuthUtils.isValidEmail(value)) {
                         showError(errorId, 'Please enter a valid email address');
