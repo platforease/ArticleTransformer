@@ -551,13 +551,12 @@
         </div>
     </div>
 
-    <!-- Configuration Manager -->
-    <script src="/src/config.js"></script>
-    
-    <!-- Firebase Script -->
+    <!-- Firebase Scripts -->
     <script type="module" src="/src/firebase-main.js"></script>
+    <script type="module" src="/src/auth-utils.js"></script>
     
-    <script>
+    <script type="module">
+        import { AuthUtils } from '/src/auth-utils.js';
 
         // Initialize password toggle functionality
         function initPasswordToggle() {
@@ -601,8 +600,7 @@
             ['email-error', 'password-error'].forEach(hideError);
             
             // Validate email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
+            if (!AuthUtils.isValidEmail(email)) {
                 showError('email-error', 'Please enter a valid email address');
                 isValid = false;
             }
@@ -639,11 +637,7 @@
                     userData.password
                 );
                 
-                if (result.success) {
-                    return result;
-                } else {
-                    throw new Error(result.error);
-                }
+                return result;
             } catch (error) {
                 console.error('Login error:', error);
                 throw error;
@@ -674,29 +668,32 @@
                 // Firebase login
                 const result = await loginUser(userData);
                 
-                // Check if email verification is needed
-                if (result.needsVerification) {
-                    // Show email verification message
-                    showError('password-error', 'Please verify your email before signing in. Check your inbox for the verification link.');
-                    
-                    // Add option to resend verification email
-                    const resendBtn = document.createElement('button');
-                    resendBtn.type = 'button';
-                    resendBtn.className = 'btn-secondary';
-                    resendBtn.style.marginTop = '10px';
-                    resendBtn.innerHTML = '<i class="fas fa-envelope"></i> Resend Verification Email';
-                    resendBtn.onclick = async () => {
-                        try {
-                            await window.firebaseAuth.sendEmailVerification();
-                            alert('Verification email sent! Please check your inbox.');
-                        } catch (error) {
-                            alert('Failed to send verification email: ' + error.message);
+                if (!result.success) {
+                    if (result.needsVerification) {
+                        // Show email verification message
+                        showError('password-error', result.error);
+                        
+                        // Add option to resend verification email
+                        const resendBtn = document.createElement('button');
+                        resendBtn.type = 'button';
+                        resendBtn.className = 'btn-secondary';
+                        resendBtn.style.marginTop = '10px';
+                        resendBtn.innerHTML = '<i class="fas fa-envelope"></i> Resend Verification Email';
+                        resendBtn.onclick = async () => {
+                            try {
+                                await window.firebaseAuth.sendEmailVerification();
+                                alert('Verification email sent! Please check your inbox.');
+                            } catch (error) {
+                                alert('Failed to send verification email: ' + error.message);
+                            }
+                        };
+                        
+                        const errorDiv = document.getElementById('password-error');
+                        if (errorDiv && !errorDiv.querySelector('.btn-secondary')) {
+                            errorDiv.appendChild(resendBtn);
                         }
-                    };
-                    
-                    const errorDiv = document.querySelector('.error-message[style*="display: block"]');
-                    if (errorDiv && !errorDiv.querySelector('.btn-secondary')) {
-                        errorDiv.appendChild(resendBtn);
+                    } else {
+                        throw new Error(result.error);
                     }
                     
                     // Reset button
@@ -714,12 +711,13 @@
                 
                 // Redirect to dashboard after delay
                 setTimeout(() => {
-                    window.location.href = 'index.html'; // Redirect to main page for now
+                    window.location.href = 'index.html';
                 }, 1500);
                 
             } catch (error) {
                 console.error('Login error:', error);
-                showError('password-error', error.message || 'Login failed. Please try again.');
+                const errorMessage = AuthUtils.formatFirebaseError(error);
+                showError('password-error', errorMessage);
                 
                 // Reset button
                 submitBtn.innerHTML = originalHTML;
@@ -730,10 +728,7 @@
         // Social login handlers
         async function handleGoogleLogin() {
             try {
-                if (!window.firebaseAuth) {
-                    alert('Firebase not loaded yet. Please try again.');
-                    return;
-                }
+                await waitForFirebase();
                 
                 const result = await window.firebaseAuth.signInWithGoogle();
                 
@@ -747,20 +742,19 @@
                         window.location.href = 'index.html';
                     }, 1500);
                 } else {
-                    alert('Google sign-in failed: ' + result.error);
+                    const errorMessage = AuthUtils.formatFirebaseError({ message: result.error });
+                    alert('Google sign-in failed: ' + errorMessage);
                 }
             } catch (error) {
                 console.error('Google login error:', error);
-                alert('Google sign-in failed. Please try again.');
+                const errorMessage = AuthUtils.formatFirebaseError(error);
+                alert('Google sign-in failed: ' + errorMessage);
             }
         }
 
         async function handleGithubLogin() {
             try {
-                if (!window.firebaseAuth) {
-                    alert('Firebase not loaded yet. Please try again.');
-                    return;
-                }
+                await waitForFirebase();
                 
                 const result = await window.firebaseAuth.signInWithGithub();
                 
@@ -774,11 +768,13 @@
                         window.location.href = 'index.html';
                     }, 1500);
                 } else {
-                    alert('GitHub sign-in failed: ' + result.error);
+                    const errorMessage = AuthUtils.formatFirebaseError({ message: result.error });
+                    alert('GitHub sign-in failed: ' + errorMessage);
                 }
             } catch (error) {
                 console.error('GitHub login error:', error);
-                alert('GitHub sign-in failed. Please try again.');
+                const errorMessage = AuthUtils.formatFirebaseError(error);
+                alert('GitHub sign-in failed: ' + errorMessage);
             }
         }
 
@@ -797,8 +793,25 @@
             });
         }
 
+        // Check if user is already authenticated
+        async function checkAuthState() {
+            try {
+                await waitForFirebase();
+                const user = await AuthUtils.waitForAuthState();
+                if (user && user.emailVerified) {
+                    // User is already signed in, redirect to dashboard
+                    window.location.href = 'index.html';
+                }
+            } catch (error) {
+                console.error('Auth state check error:', error);
+            }
+        }
+
         // Initialize everything
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Check if user is already authenticated
+            await checkAuthState();
+            
             initPasswordToggle();
             initRealTimeValidation();
             
