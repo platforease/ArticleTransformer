@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlatformEase - Transform One Article Into 20+ Multilingual Masterpieces</title>
+    <meta name="description" content="Transform your content creation with AI-powered article generation and multilingual translation. Create 20+ unique articles in 40+ languages from a single source.">
+    <meta property="og:title" content="PlatformEase - AI-Powered Multilingual Content Creation">
+    <meta property="og:description" content="Transform one article into 20+ multilingual masterpieces with AI-powered content generation and translation.">
+    <meta property="og:type" content="website">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS - will be handled by Vite -->
+    <!-- CSS will be imported through main.js -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="url(#logoGradient)"/>
+                            <path d="M12 16L20 10L28 16L24 20L28 24L20 30L12 24L16 20L12 16Z" fill="white"/>
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#3B82F6"/>
+                                    <stop offset="1" stop-color="#10B981"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">PlatformEase</span>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-ghost hidden-mobile">Sign In</a>
+                    <a href="register.html" class="btn btn-primary">Get Started Free</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Add particle container to hero section -->
+        <div class="particles-container" id="particles-container"></div>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content animate-fade-in">
+                    <div class="hero-badge">
+                        <i class="fas fa-rocket"></i>
+                        Now supporting 40+ languages
+                    </div>
+                    
+                    <!-- Enhance hero title with typewriter effect -->
+                    <h1 class="hero-title">
+                        <span id="typewriter-text"></span>
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Leverage the power of AI to exponentially expand your content reach. Create dozens of unique articles 
+                        and translate them into 40+ languages with a single click.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <!-- Update hero buttons with animated gradient -->
+                        <a href="register.html" class="btn btn-primary btn-large animated-gradient">
+                            <i class="fas fa-play"></i>
+                            Start Creating Now
+                        </a>
+                        <a href="demo.html" class="btn btn-secondary btn-large">
+                            <i class="fas fa-video"></i>
+                            Watch Demo
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image animate-slide-up">
+                    <div class="image-container">
+                        <!-- Professional PlatformEase Dashboard Mockup -->
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDgwMCA2MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJyYW5kR3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM0I4MkY2O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMxMEI5ODE7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJjYXJkR3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I2Y5ZmFmYjtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmZmZmZmO3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgCiAgPCEtLSBNYWluIERhc2hib2FyZCBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjZjNmNGY2IiByeD0iMjAiLz4KICA8IS0tIFRvcCBCYXIgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI4MCIgZmlsbD0idXJsKCNicmFuZEdyYWRpZW50KSIgcng9IjIwIiByeT0iMjAiLz4KICA8IS0tIFBsYXRmb3JtRWFzZSBMb2dvIC0tPgogIDx0ZXh0IHg9IjQwIiB5PSI1MCIgZm9udC1mYW1pbHk9IkludGVyLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IndoaXRlIj5QbGF0Zm9ybUVhc2U8L3RleHQ+CiAgPCEtLSBBSSBQb3dlcmVkIEJhZGdlIC0tPgogIDxyZWN0IHg9IjY1MCIgeT0iMjAiIHdpZHRoPSIxMjAiIGhlaWdodD0iNDAiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIgcng9IjIwIi8+CiAgPHRleHQgeD0iNzEwIiB5PSI0NSIgZm9udC1mYW1pbHk9IkludGVyLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6SWIEFJIFBvd2VyZWQ8L3RleHQ+CiAgCiAgPCEtLSBEYXNoYm9hcmQgQ29udGVudCAtLT4KICA8IS0tIEFydGljbGUgSW5wdXQgUGFuZWwgLS0+CiAgPHJlY3QgeD0iNDAiIHk9IjEyMCIgd2lkdGg9IjM2MCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjY2FyZEdyYWRpZW50KSIgcng9IjE2IiBzdHJva2U9IiNlNWU3ZWIiIHN0cm9rZS13aWR0aD0iMSIvPgogIDwhLS0gUGFuZWwgSGVhZGVyIC0tPgogIDx0ZXh0IHg9IjYwIiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJJbnRlcixzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMWYyOTM3Ij7wn5CJIEFJIEFydGljbGUgR2VuZXJhdG9yPC90ZXh0PgogIDwhLS0gSW5wdXQgQXJlYSAtLT4KICA8cmVjdCB4PSI2MCIgeT0iMTgwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE2MCIgZmlsbD0id2hpdGUiIHJ4PSI4IiBzdHJva2U9IiNkMWQ1ZGIiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjgwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJJbnRlcixzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOWNhM2FmIj5FbnRlciB5b3VyIGFydGljbGUgY29udGVudCBoZXJlLi4uPC90ZXh0PgogIDx0ZXh0IHg9IjgwIiB5PSIyMjAiIGZvbnQtZmFtaWx5PSJJbnRlcixzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNmI3MjgwIj5UaGUgZnV0dXJlIG9mIGFydGlmaWNpYWwgaW50ZWxsaWdlbmNlIGlzPC90ZXh0PgogIDx0ZXh0IHg9IjgwIiB5PSIyMzUiIGZvbnQtZmFtaWx5PSJJbnRlcixzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNmI3MjgwIj5icmlnaHQgYW5kIGZ1bGwgb2YgcG9zc2liaWxpdGllcy4uLjwvdGV4dD4KICA8IS0tIEdlbmVyYXRlIEJ1dHRvbiAtLT4KICA8cmVjdCB4PSI2MCIgeT0iMzYwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjUwIiBmaWxsPSJ1cmwoI2JyYW5kR3JhZGllbnQpIiByeD0iOCIvPgogIDx0ZXh0IHg9IjIyMCIgeT0iMzkwIiBmb250LWZhbWlseT0iSW50ZXIsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfmqAgR2VuZXJhdGUgMjArIEFydGljbGVzPC90ZXh0PgogIAogIDwhLS0gTGFuZ3VhZ2UgUGFuZWwgLS0+CiAgPHJlY3QgeD0iNDQwIiB5PSIxMjAiIHdpZHRoPSIzMjAiIGhlaWdodD0iMjIwIiBmaWxsPSJ1cmwoI2NhcmRHcmFkaWVudCkiIHJ4PSIxNiIgc3Ryb2tlPSIjZTVlN2ViIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSI0NjAiIHk9IjE1NSIgZm9udC1mYW1pbHk9IkludGVyLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxZjI5MzciPvCfjIAgTGFuZ3VhZ2UgU2VsZWN0aW9uPC90ZXh0PgogIDx0ZXh0IHg9IjQ2MCIgeT0iMTc1IiBmb250LWZhbWlseT0iSW50ZXIsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzZiNzI4MCI+U2VsZWN0IHRhcmdldCBsYW5ndWFnZXMgZm9yIHlvdXIgY29udGVudDwvdGV4dD4KICA8IS0tIExhbmd1YWdlIFRhZ3MgLS0+CiAgPHJlY3QgeD0iNDYwIiB5PSIxOTAiIHdpZHRoPSI4MCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzMzODJmNiIgcng9IjYiLz4KICA8dGV4dCB4PSI1MDAiIHk9IjIxMCIgZm9udC1mYW1pbHk9IkludGVyLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn4e68J+HuCBFTjwvdGV4dD4KICA8cmVjdCB4PSI1NTAiIHk9IjE5MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMTBiOTgxIiByeD0iNiIvPgogIDx0ZXh0IHg9IjU5MCIgeT0iMjEwIiBmb250LWZhbWlseT0iSW50ZXIsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfh6vwn4eoIEVTPC90ZXh0PgogIDxyZWN0IHg9IjY0MCIgeT0iMTkwIiB3aWR0aD0iODAiIGhlaWdodD0iMzAiIGZpbGw9IiM4YjVjZjYiIHJ4PSI2Ii8+CiAgPHRleHQgeD0iNjgwIiB5PSIyMTAiIGZvbnQtZmFtaWx5PSJJbnRlcixzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+HqvCfh7IgRlI8L3RleHQ+CiAgPHJlY3QgeD0iNDYwIiB5PSIyMzAiIHdpZHRoPSI4MCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2VjNDg5OSIgcng9IjYiLz4KICA8dGV4dCB4PSI1MDAiIHk9IjI1MCIgZm9udC1mYW1pbHk9IkludGVyLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn4e68J+HuCBERTwvdGV4dD4KICA8cmVjdCB4PSI1NTAiIHk9IjIzMCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZjU5ZTBiIiByeD0iNiIvPgogIDx0ZXh0IHg9IjU5MCIgeT0iMjUwIiBmb250LWZhbWlseT0iSW50ZXIsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfh6/wn4eyIEpQPC90ZXh0PgogIDx0ZXh0IHg9IjQ2MCIgeT0iMjg1IiBmb250LWZhbWlseT0iSW50ZXIsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzEwYjk4MSI+KyAzNSBtb3JlIGxhbmd1YWdlcy4uLjwvdGV4dD4KICA8IS0tIFN0YXRzIFNlY3Rpb24gLS0+CiAgPHJlY3QgeD0iNDQwIiB5PSIzNjAiIHdpZHRoPSIzMjAiIGhlaWdodD0iMjAwIiBmaWxsPSJ1cmwoI2NhcmRHcmFkaWVudCkiIHJ4PSIxNiIgc3Ryb2tlPSIjZTVlN2ViIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSI0NjAiIHk9IjM5NSIgZm9udC1mYW1pbHk9IkludGVyLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxZjI5MzciPvCfk4ogUGVyZm9ybWFuY2UgTWV0cmljczwvdGV4dD4KICA8IS0tIFN0YXQgQ2FyZHMgLS0+CiAgPGNpcmNsZSBjeD0iNTEwIiBjeT0iNDYwIiByPSI0MCIgZmlsbD0iIzMzODJmNiIgb3BhY2l0eT0iMC4xIi8+CiAgPHRleHQgeD0iNTEwIiB5PSI0NjAiIGZvbnQtZmFtaWx5PSJJbnRlcixzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMzM4MmY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjM1ZW0iPjIwKzwvdGV4dD4KICA8dGV4dCB4PSI1MTAiIHk9IjQ4NSIgZm9udC1mYW1pbHk9IkludGVyLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiM2YjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFydGljbGVzPC90ZXh0PgogIDxjaXJjbGUgY3g9IjYxMCIgY3k9IjQ2MCIgcj0iNDAiIGZpbGw9IiMxMGI5ODEiIG9wYWNpdHk9IjAuMSIvPgogIDx0ZXh0IHg9IjYxMCIgeT0iNDYwIiBmb250LWZhbWlseT0iSW50ZXIsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzEwYjk4MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zNWVtIj40MCs8L3RleHQ+CiAgPHRleHQgeD0iNjEwIiB5PSI0ODUiIGZvbnQtZmFtaWx5PSJJbnRlcixzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmI3MjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MYW5ndWFnZXM8L3RleHQ+CiAgPGNpcmNsZSBjeD0iNzEwIiBjeT0iNDYwIiByPSI0MCIgZmlsbD0iIzhmNWNmNiIgb3BhY2l0eT0iMC4xIi8+CiAgPHRleHQgeD0iNzEwIiB5PSI0NjAiIGZvbnQtZmFtaWx5PSJJbnRlcixzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjOGI1Y2Y2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjM1ZW0iPkFJPC90ZXh0PgogIDx0ZXh0IHg9IjcxMCIgeT0iNDg1IiBmb250LWZhbWlseT0iSW50ZXIsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iIzZiNzI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UG93ZXJlZDwvdGV4dD4KICA8IS0tIFByb2dyZXNzIEJhciAtLT4KICA8cmVjdCB4PSI0NjAiIHk9IjUyMCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSI4IiBmaWxsPSIjZTVlN2ViIiByeD0iNCIvPgogIDxyZWN0IHg9IjQ2MCIgeT0iNTIwIiB3aWR0aD0iMjEwIiBoZWlnaHQ9IjgiIGZpbGw9InVybCgjYnJhbmRHcmFkaWVudCkiIHJ4PSI0Ii8+CiAgPHRleHQgeD0iNjAwIiB5PSI1NDUiIGZvbnQtZmFtaWx5PSJJbnRlcixzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjMTBiOTgxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj43NSUgQ29tcGxldGU8L3RleHQ+Cjwvc3ZnPg=="
+                             alt="PlatformEase Professional Dashboard - AI-Powered Content Creation Platform">
+                        
+                        <!-- Floating cards with updated styling -->
+                        <div class="floating-card card-1 animate-float">🇺🇸 English</div>
+                        <div class="floating-card card-2 animate-float-delay-1">🇪🇸 Español</div>
+                        <div class="floating-card card-3 animate-float-delay-2">🇫🇷 Français</div>
+                        <div class="floating-card card-4 animate-float-delay-3">🇯🇵 日本語</div>
+                        
+                        <!-- Updated AI badge -->
+                        <div class="ai-badge">
+                            <div class="ai-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
+                                    <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2"/>
+                                    <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="ai-text">AI POWERED</div>
+                        </div>
+                        
+                        <!-- Stats overlay -->
+                        <div class="stats-overlay">
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-value">20+</div>
+                                    <div class="stat-label">Articles</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">40+</div>
+                                    <div class="stat-label">Languages</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">AI</div>
+                                    <div class="stat-label">Powered</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add scroll indicator at bottom of hero -->
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Powerful Features for <span class="text-blue">Content Creators</span>
+                </h2>
+                <p class="section-description">
+                    Everything you need to scale your content creation and reach global audiences
+                </p>
+            </div>
+            
+            <div class="features-grid" id="features-grid">
+                <!-- Features will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    See PlatformEase in <span class="text-blue">Action</span>
+                </h2>
+                <p class="section-description">
+                    Experience the magic of content multiplication and multilingual translation
+                </p>
+            </div>
+
+            <div class="demo-card">
+                <div class="demo-content">
+                    <!-- Article Input -->
+                    <div class="input-section">
+                        <label class="input-label">
+                            <i class="fas fa-pen"></i>
+                            Paste Your Original Article
+                        </label>
+                        <textarea id="article-content" 
+                                  class="article-textarea" 
+                                  placeholder="Enter your article content here... Our AI will transform it into 20+ unique variations and translate them into 40+ languages."></textarea>
+                    </div>
+
+                    <!-- Language Selection -->
+                    <div class="language-section">
+                        <label class="input-label">
+                            <i class="fas fa-globe"></i>
+                            Select Target Languages
+                        </label>
+                        <div class="languages-grid" id="languages-grid">
+                            <!-- Languages will be dynamically inserted here -->
+                        </div>
+                        <div class="show-more-container">
+                            <button id="show-all-languages" class="btn btn-ghost">
+                                <i class="fas fa-plus"></i>
+                                Show All 40+ Languages
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Generate Button -->
+                    <div class="generate-section">
+                        <button id="generate-btn" class="btn btn-primary btn-large generate-btn" disabled>
+                            <i class="fas fa-sparkles"></i>
+                            <span id="generate-text">Generate Articles</span>
+                        </button>
+                    </div>
+
+                    <!-- Generated Articles Preview -->
+                    <div id="results-section" class="results-section" style="display: none;">
+                        <h3 class="results-title">
+                            <i class="fas fa-eye"></i>
+                            Generated Articles Preview
+                            <span id="results-count" class="results-badge">0 Articles</span>
+                        </h3>
+
+                        <!-- Progress Indicator -->
+                        <div class="progress-section">
+                            <div class="progress-header">
+                                <span>Generation Progress</span>
+                                <span id="progress-percent">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div id="progress-fill" class="progress-fill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Article Grid -->
+                        <div id="articles-grid" class="articles-grid">
+                            <!-- Generated articles will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages" class="languages-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="text-blue">40+</span> Languages Supported
+                </h2>
+                <p class="section-description">
+                    Reach global audiences with native-quality translations in major world languages
+                </p>
+            </div>
+
+            <div class="featured-languages-grid" id="featured-languages">
+                <!-- Featured languages will be dynamically inserted here -->
+            </div>
+
+            <div class="languages-footer">
+                <p class="languages-note">
+                    + 32 more languages including Arabic, Portuguese, Russian, Italian, Dutch, and many more
+                </p>
+                <button id="view-all-languages" class="btn btn-primary">
+                    <i class="fas fa-list"></i>
+                    View Complete Language List
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-white">
+                    Trusted by Content Creators Worldwide
+                </h2>
+                <p class="section-description text-blue-light">
+                    Join thousands of creators who are scaling their content with PlatformEase
+                </p>
+            </div>
+
+            <div class="stats-grid" id="stats-grid">
+                <!-- Stats will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- White Spacer Section -->
+    <section class="spacer-section"></section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="url(#logoGradientFooter)"/>
+                                <path d="M12 16L20 10L28 16L24 20L28 24L20 30L12 24L16 20L12 16Z" fill="white"/>
+                                <defs>
+                                    <linearGradient id="logoGradientFooter" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#93c5fd"/>
+                                        <stop offset="1" stop-color="#6ee7b7"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <span class="logo-text">PlatformEase</span>
+                    </div>
+                    <p class="brand-description">
+                        Transform your content creation with AI-powered article generation and multilingual translation.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 PlatformEase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Language Modal -->
+    <div id="language-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">All Supported Languages (<span id="total-languages">40</span>)</h2>
+                <button id="close-modal" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="all-languages-grid" class="all-languages-grid">
+                    <!-- All languages will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

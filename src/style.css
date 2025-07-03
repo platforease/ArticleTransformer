@@ -1,0 +1,13 @@
+/* Basic reset and typography for PlatformEase */
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove any conflicting styles that might interfere with the main layout */
+body {
+  margin: 0;
+  /* Remove default Vite flex centering that conflicts with our layout */
+}
