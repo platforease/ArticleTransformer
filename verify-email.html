@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Verification</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Email Verification Required</h2>
+    <p>
+      Thank you for registering!<br>
+      Please check your email and click the verification link to activate your account.
+    </p>
+    <button id="resend-btn" class="btn btn-primary">Resend Verification Email</button>
+    <div id="message" class="success-message" style="display:none;"></div>
+    <div id="error" class="error-message" style="display:none;"></div>
+    <div class="auth-footer">
+      <a href="login.html">Back to Login</a>
+    </div>
+  </div>
+  <script type="module" src="/src/firebase-main.js"></script>
+  <script>
+    const resendBtn = document.getElementById('resend-btn');
+    const message = document.getElementById('message');
+    const error = document.getElementById('error');
+    resendBtn.addEventListener('click', async () => {
+      message.style.display = 'none';
+      error.style.display = 'none';
+      try {
+        await window.firebaseAuth.sendEmailVerification();
+        message.textContent = 'Verification email resent! Please check your inbox.';
+        message.style.display = 'block';
+      } catch (err) {
+        error.textContent = err.message || 'Failed to resend verification email.';
+        error.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html> 
